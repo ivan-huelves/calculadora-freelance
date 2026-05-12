@@ -310,7 +310,7 @@
     <p class="m-0 tracking-[0.5px]">
       © 2026 Iván Huelves Illas – 
       <a href="https://github.com/ivan-huelves" target="_blank" rel="noopener noreferrer" class="text-[#444] no-underline border-b border-[#ccc] transition-all hover:text-black hover:border-black pb-0.5">GitHub</a> – 
-      <a href="#" target="_blank" rel="noopener noreferrer" class="text-[#444] no-underline border-b border-[#ccc] transition-all hover:text-black hover:border-black pb-0.5">LinkedIn</a> – 
+<a href="https://linkedin.com/in/ivan-huelves" target="_blank" rel="noopener noreferrer" class="text-[#444] no-underline border-b border-[#ccc] transition-all hover:text-black hover:border-black pb-0.5">LinkedIn</a>
       <span class="email-protector" style="unicode-bidi: bidi-override; direction: rtl; display: inline-block; color: #444;">se.dirdamdsed@sevleuhi</span>
     </p>
   </div>

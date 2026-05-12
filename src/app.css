@@ -6,27 +6,24 @@ body {
   font-family: 'Space Mono', monospace;
 }
 
+/* Color de selección de texto */
 ::selection {
   background-color: #d4d4d4; 
   color: #000000;
 }
 
-/* Agrupamos las clases de Tailwind en componentes reutilizables */
 @layer components {
   .card {
     @apply bg-white border border-[#ccc] p-6 rounded-[8px] hover:-translate-y-1 transition-transform shadow-[0_5px_15px_rgba(0,0,0,0.05)];
   }
   
-  .input-base {
-    @apply w-full border border-[#ccc] rounded outline-none transition-colors bg-white focus:border-black;
-  }
-  
+  /* Definimos las clases repitiendo las utilidades básicas para que no falle */
   .input-field {
-    @apply input-base p-2 text-sm;
+    @apply w-full border border-[#ccc] rounded outline-none transition-colors bg-white focus:border-black p-2 text-sm;
   }
   
   .input-large {
-    @apply input-base p-3 text-3xl focus:ring-1 focus:ring-black;
+    @apply w-full border border-[#ccc] rounded outline-none transition-colors bg-white focus:border-black p-3 text-3xl focus:ring-1 focus:ring-black;
   }
 
   .label-title {
@@ -37,7 +34,6 @@ body {
     @apply text-xs text-[#666] block mb-1;
   }
 
-  /* Clases para los modales de información (?) */
   .tooltip-icon {
     @apply relative group cursor-help inline-flex items-center justify-center rounded-full border border-[#666] text-[#666] font-bold hover:bg-black hover:text-white transition-colors;
   }
