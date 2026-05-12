@@ -159,7 +159,7 @@
           </label>
           <label class="sm:col-span-2 mt-2">
             <div class="flex items-center gap-2 mb-1">
-              <span class="label-title mb-0">Factor Eficiencia (%)</span>
+              <span class="label-title mb-0">Factor eficiencia (%)</span>
               <div class="tooltip-icon w-4 h-4 text-[10px]">
                 ?
                 <div class="tooltip-bridge w-64">
@@ -177,7 +177,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5 sm:gap-y-4">
           <label>
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-title mb-0">Cuota Autónomo</span>
+              <span class="label-title mb-0">Cuota autónomo</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-56">
@@ -208,7 +208,7 @@
             <input type="number" bind:value={suministros} class="input-field">
           </label>
           <label>
-            <span class="label-title">Licencias y Suscripciones</span>
+            <span class="label-title">Licencias y suscripciones</span>
             <input type="number" bind:value={licenciasSoftware} class="input-field">
           </label>
           <label>
@@ -241,7 +241,7 @@
 
           <label class="sm:col-span-2 mt-2">
             <div class="flex items-center gap-2 mb-1">
-              <span class="label-title mb-0">IRPF Estimado (%)</span>
+              <span class="label-title mb-0">IRPF estimado (%)</span>
               <div class="tooltip-icon w-4 h-4 text-[10px]">
                 ?
                 <div class="tooltip-bridge w-64">
