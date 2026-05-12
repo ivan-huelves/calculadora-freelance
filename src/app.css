@@ -32,7 +32,7 @@ body {
     @apply text-xs text-[#666] block mb-1;
   }
 
-  /* --- LÓGICA DE TOOLTIPS (CSS ESTÁNDAR) --- */
+  /* --- TOOLTIPS --- */
   .tooltip-icon {
     @apply relative cursor-help inline-flex items-center justify-center rounded-full border border-[#666] text-[#666] font-bold hover:bg-black hover:text-white transition-colors;
   }
@@ -41,12 +41,36 @@ body {
     @apply absolute bottom-full left-1/2 -translate-x-1/2 pb-2 w-64 opacity-0 invisible transition-all z-50;
   }
 
-  /* Cuando pasamos el ratón por el icono, mostramos el puente */
   .tooltip-icon:hover .tooltip-bridge {
     @apply opacity-100 visible;
   }
 
   .tooltip-box {
     @apply p-3 bg-black text-white text-xs rounded shadow-lg font-normal pointer-events-auto text-left tracking-normal normal-case;
+  }
+
+  /* --- ALINEACIÓN PRECIOS --- */
+  .price-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+  }
+
+  .decimal-part {
+    font-size: 0.6em; 
+    color: inherit;
+    line-height: 1;
+    margin-left: 0.05em;
+  }
+
+  .no-bold {
+    font-weight: normal;
+  }
+
+  .email-protector {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: inline-block;
+    color: #444;
   }
 }

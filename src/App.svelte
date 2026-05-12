@@ -1,6 +1,7 @@
 <script>
   import { valoresIniciales } from './config.js';
 
+  // VARIABLES DE ENTRADA
   let sueldoNetoBase = valoresIniciales.sueldoNetoBase; 
   let diasSemana = valoresIniciales.diasSemana;
   let horasDia = valoresIniciales.horasDia;
@@ -22,6 +23,7 @@
   let margenBeneficio = valoresIniciales.margenBeneficio;
   let bolsaContingencia = valoresIniciales.bolsaContingencia;
 
+  // CÁLCULO DE TIEMPO Y PROPORCIÓN
   $: horasSemanales = diasSemana * horasDia;
   $: proporcionJornada = horasSemanales / 40; 
   $: sueldoNetoReal = sueldoNetoBase * proporcionJornada;
@@ -31,6 +33,7 @@
   $: diasRealesAno = diasLaborablesTeoricos - (diasDescontar * (diasSemana / 5));
   $: horasFacturablesAno = diasRealesAno * horasDia * (eficiencia / 100);
 
+  // CÁLCULO FINANCIERO
   $: amortizacionMensual = valorEquiposTotal / (anosRenovacion * 12);
   $: gastosFijosMensuales = cuotaAutonomo + gestoria + alquiler + suministros + licenciasSoftware + otrosGastos + amortizacionMensual;
   
@@ -40,6 +43,7 @@
   $: totalConMargenes = brutoAnualNecesario * (1 + (margenBeneficio / 100) + (bolsaContingencia / 100));
   $: precioHora = totalConMargenes / horasFacturablesAno;
 
+  // CÁLCULO PROYECTO
   let horasProyecto = valoresIniciales.horasProyecto;
   let gastosTipografias = valoresIniciales.gastosTipografias;
   let gastosImagenes = valoresIniciales.gastosImagenes;
@@ -49,6 +53,20 @@
   $: gastosVariablesProyecto = gastosTipografias + gastosImagenes + gastosHosting + gastosOtrosDirectos;
   $: costeProyecto = (horasProyecto * precioHora) + gastosVariablesProyecto;
   $: costeProyectoIVA = costeProyecto * 1.21; 
+
+  function formatPartes(valor) {
+    const stringValor = new Intl.NumberFormat('es-ES', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(valor);
+    
+    const [entero, decimal] = stringValor.split(',');
+    return { entero, decimal };
+  }
+
+  $: partesPrecioHora = formatPartes(precioHora);
+  $: partesCosteProyecto = formatPartes(costeProyecto);
+  $: partesCosteProyectoIVA = formatPartes(costeProyectoIVA);
 </script>
 
 <svelte:head>
@@ -62,13 +80,11 @@
   
   <div class="max-w-[1000px] mx-auto w-full flex-grow">
     
-    <!-- CABECERA -->
     <header class="mb-10 pb-6 border-b border-[#ddd]">
       <h1 class="text-3xl md:text-4xl font-bold mb-2">Calculadora Freelance</h1>
       <p class="text-base text-[#666]">Descubre tu tarifa por hora real basándote en tus objetivos financieros,<br> gastos de estructura y tiempo de trabajo efectivo.</p>
     </header>
 
-    <!-- BLOQUE 1 -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
       <section class="card">
         <div class="flex items-center gap-2 mb-2">
@@ -94,7 +110,9 @@
 
       <section class="bg-black text-white border border-black p-6 rounded-[8px] shadow-[0_5px_15px_rgba(0,0,0,0.1)] flex flex-col justify-center items-center text-center transition-all hover:-translate-y-1">
         <p class="text-[#ccc] font-bold tracking-widest text-sm mb-4">TARIFA RECOMENDADA</p>
-        <div class="text-6xl md:text-7xl font-bold">{precioHora.toFixed(2)}€<span class="text-2xl font-normal text-[#888]">/h</span></div>
+        <div class="text-6xl md:text-7xl font-bold price-wrapper">
+          {partesPrecioHora.entero}<span class="decimal-part">,{partesPrecioHora.decimal}</span><span class="decimal-part no-bold" style="margin-left: 4px;">€/h</span>
+        </div>
         <div class="mt-6 pt-4 border-t border-[#333] flex justify-center gap-4 text-xs text-[#888] w-full">
           <span>Días/año: <strong class="text-white">{Math.round(diasRealesAno)}</strong></span>
           <span>|</span>
@@ -103,11 +121,10 @@
       </section>
     </div>
 
-    <!-- BLOQUE 2 -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
       <section class="card">
         <h3 class="text-lg font-bold mb-6 border-b border-[#ddd] pb-2">Disponibilidad real</h3>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5 sm:gap-y-4">
           <label>
             <span class="label-title">Días/semana</span>
             <input type="number" bind:value={diasSemana} class="input-field">
@@ -140,7 +157,7 @@
             </div>
             <input type="number" bind:value={festivosAlAno} class="input-field">
           </label>
-          <label class="col-span-2 mt-2">
+          <label class="sm:col-span-2 mt-2">
             <div class="flex items-center gap-2 mb-1">
               <span class="label-title mb-0">Factor Eficiencia (%)</span>
               <div class="tooltip-icon w-4 h-4 text-[10px]">
@@ -157,10 +174,10 @@
 
       <section class="card">
         <h3 class="text-lg font-bold mb-6 border-b border-[#ddd] pb-2">Gastos e impuestos</h3>
-        <div class="grid grid-cols-2 gap-x-4 gap-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5 sm:gap-y-4">
           <label>
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-small mb-0">Cuota Autónomo</span>
+              <span class="label-title mb-0">Cuota Autónomo</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-56">
@@ -171,16 +188,16 @@
             <input type="number" bind:value={cuotaAutonomo} class="input-field">
           </label>
           <label>
-            <span class="label-small">Gestoría</span>
+            <span class="label-title">Gestoría</span>
             <input type="number" bind:value={gestoria} class="input-field">
           </label>
           <label>
-            <span class="label-small">Local / Coworking</span>
+            <span class="label-title">Local / Coworking</span>
             <input type="number" bind:value={alquiler} class="input-field">
           </label>
           <label>
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-small mb-0">Suministros</span>
+              <span class="label-title mb-0">Suministros</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-56">
@@ -191,17 +208,17 @@
             <input type="number" bind:value={suministros} class="input-field">
           </label>
           <label>
-            <span class="label-small">Licencias y Suscripciones</span>
+            <span class="label-title">Licencias y Suscripciones</span>
             <input type="number" bind:value={licenciasSoftware} class="input-field">
           </label>
           <label>
-            <span class="label-small">Otros</span>
+            <span class="label-title">Otros</span>
             <input type="number" bind:value={otrosGastos} class="input-field">
           </label>
 
-          <div class="col-span-2 mt-2">
+          <div class="sm:col-span-2 mt-2">
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-small mb-0">Amortización de equipos</span>
+              <span class="label-title mb-0">Amortización de equipos</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-64">
@@ -222,9 +239,9 @@
             </div>
           </div>
 
-          <label class="col-span-2 mt-2">
+          <label class="sm:col-span-2 mt-2">
             <div class="flex items-center gap-2 mb-1">
-              <span class="label-small mb-0">IRPF Estimado (%)</span>
+              <span class="label-title mb-0">IRPF Estimado (%)</span>
               <div class="tooltip-icon w-4 h-4 text-[10px]">
                 ?
                 <div class="tooltip-bridge w-64">
@@ -237,7 +254,7 @@
 
           <label class="mt-2">
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-small mb-0">Beneficio %</span>
+              <span class="label-title mb-0">Beneficio %</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-64">
@@ -249,7 +266,7 @@
           </label>
           <label class="mt-2">
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-small mb-0">Contingencia %</span>
+              <span class="label-title mb-0">Contingencia %</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-64">
@@ -263,7 +280,6 @@
       </section>
     </div>
 
-    <!-- BLOQUE 3 -->
     <section class="card p-8">
       <h2 class="text-2xl font-bold mb-6">Presupuesto por Proyecto</h2>
       <div class="flex flex-col md:flex-row gap-8 items-start">
@@ -274,32 +290,40 @@
         
         <div class="w-full md:w-2/4">
           <span class="label-title">Gastos directos extras</span>
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <label>
-              <span class="text-[10px] uppercase font-bold text-[#ccc] block mb-1">Tipografías</span>
+              <span class="label-small mb-1 block">Tipografías</span>
               <input type="number" bind:value={gastosTipografias} class="input-field">
             </label>
             <label>
-              <span class="text-[10px] uppercase font-bold text-[#ccc] block mb-1">Fotos/Ilustración</span>
+              <span class="label-small mb-1 block">Fotos/Ilustración</span>
               <input type="number" bind:value={gastosImagenes} class="input-field">
             </label>
             <label>
-              <span class="text-[10px] uppercase font-bold text-[#ccc] block mb-1">Hosting/Dominios</span>
+              <span class="label-small mb-1 block">Hosting/Dominios</span>
               <input type="number" bind:value={gastosHosting} class="input-field">
             </label>
             <label>
-              <span class="text-[10px] uppercase font-bold text-[#ccc] block mb-1">Otros</span>
+              <span class="label-small mb-1 block">Otros</span>
               <input type="number" bind:value={gastosOtrosDirectos} class="input-field">
             </label>
           </div>
         </div>
         
         <div class="w-full md:w-1/4 p-5 border border-black bg-black text-white text-right rounded-[4px] self-stretch flex flex-col justify-center">
-          <p class="text-[#ccc] text-[10px] font-bold tracking-widest">TOTAL (SIN IVA)</p>
-          <p class="text-3xl font-bold mt-1">{costeProyecto.toFixed(2)}€</p>
+          <p class="text-[#ccc] text-[10px] font-bold tracking-widest uppercase">Total (sin IVA)</p>
+          <div class="price-wrapper text-3xl font-bold mt-1">
+            <span>{partesCosteProyecto.entero}</span>
+            <span class="decimal-part">,{partesCosteProyecto.decimal}</span>
+            <span class="decimal-part no-bold" style="margin-left: 4px;">€</span>
+          </div>
           <div class="mt-4 pt-3 border-t border-[#333]">
-            <p class="text-[#ccc] text-[10px] font-bold tracking-widest">TOTAL CON IVA (21%)</p>
-            <p class="text-xl font-bold mt-1 text-[#888]">{costeProyectoIVA.toFixed(2)}€</p>
+            <p class="text-[#ccc] text-[10px] font-bold tracking-widest uppercase">Total con IVA (21%)</p>
+            <div class="price-wrapper text-xl font-bold mt-1 text-[#888]">
+              <span>{partesCosteProyectoIVA.entero}</span>
+              <span class="decimal-part">,{partesCosteProyectoIVA.decimal}</span>
+              <span class="decimal-part no-bold" style="margin-left: 3px;">€</span>
+            </div>
           </div>
         </div>
       </div>
