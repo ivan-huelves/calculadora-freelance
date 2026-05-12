@@ -68,7 +68,7 @@
       <p class="text-base text-[#666]">Descubre tu tarifa por hora real basándote en tus objetivos financieros,<br> gastos de estructura y tiempo de trabajo efectivo.</p>
     </header>
 
-    <!-- BLOQUE 1: SUELDO Y TARIFA -->
+    <!-- BLOQUE 1 -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
       <section class="card">
         <div class="flex items-center gap-2 mb-2">
@@ -103,7 +103,7 @@
       </section>
     </div>
 
-    <!-- BLOQUE 2: DISPONIBILIDAD Y GASTOS -->
+    <!-- BLOQUE 2 -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
       <section class="card">
         <h3 class="text-lg font-bold mb-6 border-b border-[#ddd] pb-2">Disponibilidad real</h3>
@@ -209,13 +209,13 @@
                 </div>
               </div>
             </div>
-            <div class="flex items-center border border-[#ccc] rounded focus-within:border-black transition-colors overflow-hidden">
-              <div class="flex-1 flex items-center bg-white px-3">
+            <div class="flex items-center border border-[#ccc] rounded bg-white overflow-hidden">
+              <div class="flex-1 flex items-center px-3">
                 <span class="text-[10px] text-[#ccc] font-bold uppercase tracking-wider mr-2">Valor(€)</span>
                 <input type="number" bind:value={valorEquiposTotal} class="w-full py-2 outline-none text-sm">
               </div>
               <div class="w-px h-6 bg-[#ccc]"></div>
-              <div class="flex-1 flex items-center bg-white px-3">
+              <div class="flex-1 flex items-center px-3">
                 <span class="text-[10px] text-[#ccc] font-bold uppercase tracking-wider mr-2">Años</span>
                 <input type="number" bind:value={anosRenovacion} class="w-full py-2 outline-none text-sm">
               </div>
@@ -263,7 +263,7 @@
       </section>
     </div>
 
-    <!-- BLOQUE 3: PRESUPUESTO PROYECTO -->
+    <!-- BLOQUE 3 -->
     <section class="card p-8">
       <h2 class="text-2xl font-bold mb-6">Presupuesto por Proyecto</h2>
       <div class="flex flex-col md:flex-row gap-8 items-start">
@@ -310,7 +310,7 @@
     <p class="m-0 tracking-[0.5px]">
       © 2026 Iván Huelves Illas – 
       <a href="https://github.com/ivan-huelves" target="_blank" rel="noopener noreferrer" class="text-[#444] no-underline border-b border-[#ccc] transition-all hover:text-black hover:border-black pb-0.5">GitHub</a> – 
-<a href="https://linkedin.com/in/ivan-huelves" target="_blank" rel="noopener noreferrer" class="text-[#444] no-underline border-b border-[#ccc] transition-all hover:text-black hover:border-black pb-0.5">LinkedIn</a>
+      <a href="https://linkedin.com/in/ivan-huelves" target="_blank" rel="noopener noreferrer" class="text-[#444] no-underline border-b border-[#ccc] transition-all hover:text-black hover:border-black pb-0.5">LinkedIn</a> – 
       <span class="email-protector" style="unicode-bidi: bidi-override; direction: rtl; display: inline-block; color: #444;">se.dirdamdsed@sevleuhi</span>
     </p>
   </div>

@@ -6,7 +6,6 @@ body {
   font-family: 'Space Mono', monospace;
 }
 
-/* Color de selección de texto */
 ::selection {
   background-color: #d4d4d4; 
   color: #000000;
@@ -17,7 +16,6 @@ body {
     @apply bg-white border border-[#ccc] p-6 rounded-[8px] hover:-translate-y-1 transition-transform shadow-[0_5px_15px_rgba(0,0,0,0.05)];
   }
   
-  /* Definimos las clases repitiendo las utilidades básicas para que no falle */
   .input-field {
     @apply w-full border border-[#ccc] rounded outline-none transition-colors bg-white focus:border-black p-2 text-sm;
   }
@@ -34,12 +32,18 @@ body {
     @apply text-xs text-[#666] block mb-1;
   }
 
+  /* --- LÓGICA DE TOOLTIPS (CSS ESTÁNDAR) --- */
   .tooltip-icon {
-    @apply relative group cursor-help inline-flex items-center justify-center rounded-full border border-[#666] text-[#666] font-bold hover:bg-black hover:text-white transition-colors;
+    @apply relative cursor-help inline-flex items-center justify-center rounded-full border border-[#666] text-[#666] font-bold hover:bg-black hover:text-white transition-colors;
   }
 
   .tooltip-bridge {
-    @apply absolute bottom-full left-1/2 -translate-x-1/2 pb-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50;
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 pb-2 w-64 opacity-0 invisible transition-all z-50;
+  }
+
+  /* Cuando pasamos el ratón por el icono, mostramos el puente */
+  .tooltip-icon:hover .tooltip-bridge {
+    @apply opacity-100 visible;
   }
 
   .tooltip-box {
