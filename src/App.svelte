@@ -82,8 +82,9 @@
     
     <header class="mb-10 pb-6 border-b border-[#ddd]">
       <h1 class="text-3xl md:text-4xl font-bold mb-2">Calculadora Freelance</h1>
-      <p class="text-base text-[#666]">Descubre tu tarifa por hora real basándote en tus objetivos financieros,<br> gastos de estructura y tiempo de trabajo efectivo.</p>
-    </header>
+<p class="text-base text-[#666] [text-wrap:balance] max-w-2xl">
+  Descubre tu tarifa por hora real basándote en tus objetivos financieros, gastos de estructura y tiempo de trabajo efectivo.
+</p>    </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
       <section class="card">
