@@ -193,7 +193,7 @@
             <input type="number" bind:value={gestoria} class="input-field">
           </label>
           <label>
-            <span class="label-title">Local / Coworking</span>
+            <span class="label-title">Local/coworking</span>
             <input type="number" bind:value={alquiler} class="input-field">
           </label>
           <label>
@@ -209,7 +209,7 @@
             <input type="number" bind:value={suministros} class="input-field">
           </label>
           <label>
-            <span class="label-title">Licencias y suscripciones</span>
+            <span class="label-title">Licencias/suscripciones</span>
             <input type="number" bind:value={licenciasSoftware} class="input-field">
           </label>
           <label>
@@ -297,11 +297,11 @@
               <input type="number" bind:value={gastosTipografias} class="input-field">
             </label>
             <label>
-              <span class="label-small mb-1 block">Fotos/Ilustración</span>
+              <span class="label-small mb-1 block">Fotos/ilustraciones</span>
               <input type="number" bind:value={gastosImagenes} class="input-field">
             </label>
             <label>
-              <span class="label-small mb-1 block">Hosting/Dominios</span>
+              <span class="label-small mb-1 block">Hosting/dominios/impresión</span>
               <input type="number" bind:value={gastosHosting} class="input-field">
             </label>
             <label>
