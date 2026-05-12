@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+body {
+  background-color: #EDEDED;
+  color: #000000;
+  font-family: 'Space Mono', monospace;
+}
+
+::selection {
+  background-color: #d4d4d4; 
+  color: #000000;
+}
+
+/* Agrupamos las clases de Tailwind en componentes reutilizables */
+@layer components {
+  .card {
+    @apply bg-white border border-[#ccc] p-6 rounded-[8px] hover:-translate-y-1 transition-transform shadow-[0_5px_15px_rgba(0,0,0,0.05)];
+  }
+  
+  .input-base {
+    @apply w-full border border-[#ccc] rounded outline-none transition-colors bg-white focus:border-black;
+  }
+  
+  .input-field {
+    @apply input-base p-2 text-sm;
+  }
+  
+  .input-large {
+    @apply input-base p-3 text-3xl focus:ring-1 focus:ring-black;
+  }
+
+  .label-title {
+    @apply text-sm font-bold text-[#666] block mb-1;
+  }
+
+  .label-small {
+    @apply text-xs text-[#666] block mb-1;
+  }
+
+  /* Clases para los modales de información (?) */
+  .tooltip-icon {
+    @apply relative group cursor-help inline-flex items-center justify-center rounded-full border border-[#666] text-[#666] font-bold hover:bg-black hover:text-white transition-colors;
+  }
+
+  .tooltip-bridge {
+    @apply absolute bottom-full left-1/2 -translate-x-1/2 pb-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50;
+  }
+
+  .tooltip-box {
+    @apply p-3 bg-black text-white text-xs rounded shadow-lg font-normal pointer-events-auto text-left tracking-normal normal-case;
+  }
+}
