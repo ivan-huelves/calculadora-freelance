@@ -18,7 +18,7 @@ export const valoresIniciales = {
   valorEquiposTotal: 3000,
   anosRenovacion: 5,
   
-  irpf: 16,
+  irpf: 13,
   margenBeneficio: 10,
   bolsaContingencia: 5,
   
