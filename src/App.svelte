@@ -246,7 +246,7 @@
               <div class="tooltip-icon w-4 h-4 text-[10px]">
                 ?
                 <div class="tooltip-bridge w-64">
-                  <div class="tooltip-box">Retención estimada para unos ingresos netos de 2000€. <a href="https://www2.agenciatributaria.gob.es/wlpl/PRET-R200/R260/index.zul" target="_blank" class="text-blue-300 underline hover:text-blue-100">Calcula tu tramo en Hacienda</a>.</div>
+                  <div class="tooltip-box">La retención estimada para unos ingresos netos de 1500€ es del 13%. <a href="https://www2.agenciatributaria.gob.es/wlpl/PRET-R200/R260/index.zul" target="_blank" class="text-blue-300 underline hover:text-blue-100">Calcula tu tramo en Hacienda</a>.</div>
                 </div>
               </div>
             </div>
