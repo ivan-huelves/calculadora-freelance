@@ -178,7 +178,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5 sm:gap-y-4">
           <label>
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-title mb-0">Cuota autónomo</span>
+              <span class="label-title mb-0">Cuota autónomo (mes)</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-56">
@@ -189,16 +189,16 @@
             <input type="number" bind:value={cuotaAutonomo} class="input-field">
           </label>
           <label>
-            <span class="label-title">Gestoría</span>
+            <span class="label-title">Gestoría (mes)</span>
             <input type="number" bind:value={gestoria} class="input-field">
           </label>
           <label>
-            <span class="label-title">Local/coworking</span>
+            <span class="label-title">Local/coworking (mes)</span>
             <input type="number" bind:value={alquiler} class="input-field">
           </label>
           <label>
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-title mb-0">Suministros</span>
+              <span class="label-title mb-0">Suministros (mes)</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-56">
@@ -209,21 +209,21 @@
             <input type="number" bind:value={suministros} class="input-field">
           </label>
           <label>
-            <span class="label-title">Licencias/suscripciones</span>
+            <span class="label-title">Licencias (mes)</span>
             <input type="number" bind:value={licenciasSoftware} class="input-field">
           </label>
           <label>
-            <span class="label-title">Otros</span>
+            <span class="label-title">Otros (mes)</span>
             <input type="number" bind:value={otrosGastos} class="input-field">
           </label>
 
           <div class="sm:col-span-2 mt-2">
             <div class="flex items-center gap-1 mb-1">
-              <span class="label-title mb-0">Amortización de equipos</span>
+              <span class="label-title mb-0">Amortización de equipos y otros</span>
               <div class="tooltip-icon w-3 h-3 text-[8px]">
                 ?
                 <div class="tooltip-bridge w-64">
-                  <div class="tooltip-box">Suma el valor de tus equipos (ordenador, tableta, monitores) y los años que tardas en renovarlos para ahorrar mes a mes su coste.</div>
+                  <div class="tooltip-box">Suma el valor de tus equipos y otros (ordenador, tableta, monitores...) y los años que tardas en renovarlos.</div>
                 </div>
               </div>
             </div>
@@ -246,7 +246,7 @@
               <div class="tooltip-icon w-4 h-4 text-[10px]">
                 ?
                 <div class="tooltip-bridge w-64">
-                  <div class="tooltip-box">Retención estimada para unos ingresos netos de {sueldoNetoReal.toFixed(0)}€. <a href="https://www2.agenciatributaria.gob.es/wlpl/PRET-R200/R260/index.zul" target="_blank" class="text-blue-300 underline hover:text-blue-100">Calcula tu tramo en Hacienda</a>.</div>
+                  <div class="tooltip-box">Retención estimada para unos ingresos netos de 2000€. <a href="https://www2.agenciatributaria.gob.es/wlpl/PRET-R200/R260/index.zul" target="_blank" class="text-blue-300 underline hover:text-blue-100">Calcula tu tramo en Hacienda</a>.</div>
                 </div>
               </div>
             </div>

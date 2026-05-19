@@ -1,6 +1,6 @@
 // src/config.js
 export const valoresIniciales = {
-  sueldoNetoBase: 2000,
+  sueldoNetoBase: 1500,
   
   diasSemana: 5,
   horasDia: 8,
@@ -11,12 +11,12 @@ export const valoresIniciales = {
   cuotaAutonomo: 370,
   gestoria: 50,
   alquiler: 0,
-  suministros: 60,
+  suministros: 50,
   licenciasSoftware: 50,
   otrosGastos: 0,
   
   valorEquiposTotal: 3000,
-  anosRenovacion: 4,
+  anosRenovacion: 5,
   
   irpf: 16,
   margenBeneficio: 10,
